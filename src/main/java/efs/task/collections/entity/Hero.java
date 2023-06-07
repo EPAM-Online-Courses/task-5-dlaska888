@@ -1,36 +1,51 @@
 package efs.task.collections.entity;
 
-public class Hero {
+import java.util.Objects;
+
+public class Hero
+{
     private String name;
     private String heroClass;
 
-    public Hero(String name, String heroClass) {
+    public Hero(String name, String heroClass)
+    {
         this.name = name;
         this.heroClass = heroClass;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public String getHeroClass() {
+    public String getHeroClass()
+    {
         return heroClass;
     }
 
     //TODO implementacja metody equal porównująca obiekty Hero na podstawie pól name i heroClass.
     @Override
-    public boolean equals(Object o) {
-        return true;
+    public boolean equals(Object o)
+    {
+        if (this == o)
+            return true;
+
+        if (!(o instanceof Hero))
+            return false;
+
+        return Objects.equals(this.name, ((Hero) o).name) && Objects.equals(this.heroClass, ((Hero) o).heroClass);
     }
 
     //TODO implementacja metody equal biorąca pod uwagę name i heroClass.
     @Override
-    public int hashCode() {
-        return 1;
+    public int hashCode()
+    {
+        return Objects.hash(this.name, this.heroClass);
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "My name is " + name + "and I am " + heroClass;
     }
 }

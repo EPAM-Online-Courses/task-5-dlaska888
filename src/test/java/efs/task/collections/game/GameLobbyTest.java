@@ -80,6 +80,8 @@ class GameLobbyTest {
 
         gameLobby.disableDLC();
 
+        var map = gameLobby.getPlayableTownsWithHeroesList();
+
         softly.assertThat(gameLobby.getPlayableTownsWithHeroesList().size()).isEqualTo(TOWNS_NUMBER_NO_DLC);
         for (Map.Entry<Town, List<Hero>> entry : gameLobby.getPlayableTownsWithHeroesList().entrySet()) {
             softly.assertThat(entry.getKey().getTownName()).isEqualTo(alphabeticalTowns.get(iterator++));
